@@ -27,6 +27,10 @@ public class MyList<E> {
 		{
 			if(this.size==index)
 			{
+				if(this.size==this.container.length)
+				{
+					increaseCapacity();
+				}
 				increaseCapacity();
 				this.container[size++]=value;
 			}
@@ -75,7 +79,7 @@ public class MyList<E> {
 	}
 	private void increaseCapacity()
 	{
-		Integer newSize=this.container.length;
+		Integer newSize=this.container.length*2;
 		this.container=Arrays.copyOf(this.container, newSize);
 	}
 	public String toString()
